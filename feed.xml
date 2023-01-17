@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-16T19:55:52-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Learning Blog</title><subtitle>I enjoy AI and would like to keep some docs from my learning journey. I decided to post it here at Hweean.com ^_^</subtitle><entry><title type="html">Basics of Bayesian Statistics</title><link href="http://localhost:4000/bayesian/statistics/2023/01/16/bayesian-statistics.html" rel="alternate" type="text/html" title="Basics of Bayesian Statistics" /><published>2023-01-16T18:02:21-06:00</published><updated>2023-01-16T18:02:21-06:00</updated><id>http://localhost:4000/bayesian/statistics/2023/01/16/bayesian-statistics</id><content type="html" xml:base="http://localhost:4000/bayesian/statistics/2023/01/16/bayesian-statistics.html"><![CDATA[<h2 id="quick-notes">Quick Notes</h2>
+
+<p><img src="/assets/bays_therom.png" alt="bays therom" title="bays therom" /></p>
+
+<p>Hypothesis = H <br />
+Evidence = E</p>
+
+<h3 id="three-ways-of-saying-the-same-thing-not-e">Three ways of saying the same thing. “Not E”</h3>
+
+<p>E prime == E’<br />
+E complement == E<sup>c</sup><br />
+Not E == ¬E</p>
+
+<h1 id="example-problem-1">Example Problem 1:</h1>
+
+<p>Bob and Jane are sometimes late for work. 70% of the time neither of them are late. Bob is late 20% of the time, while Jane is late 25% of the time.</p>
+
+<p>Last Monday Jane was late. Find the probability that Bob was late.</p>
+
+<p>Evidence: Jane is late</p>
+
+<p>Hypothesis: Bob is late</p>
+
+<p><code class="language-plaintext highlighter-rouge">P(E' ⋂ H') = 0.7</code> =&gt; (70% of the time neither of them are late)</p>
+
+<p><code class="language-plaintext highlighter-rouge">P(H) = 0.2</code> =&gt; (Bob is late 20% of the time)</p>
+
+<p><code class="language-plaintext highlighter-rouge">P(E) = 0.25</code> =&gt; (Jane is late 25% of the time)</p>
+
+<p>Step 1: Find out how much of the total both <code class="language-plaintext highlighter-rouge">H</code> and <code class="language-plaintext highlighter-rouge">(E' ⋂ H')</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">0.2 + 0.7 = 0.9</code></p>
+
+<p>Step 2: How much of <code class="language-plaintext highlighter-rouge">E</code> that is not part of <code class="language-plaintext highlighter-rouge">H</code> is there?</p>
+
+<p><code class="language-plaintext highlighter-rouge">1 - 0.9 = 0.1</code>
+i.e. <code class="language-plaintext highlighter-rouge">(E ⋂ H') = 0.1</code></p>
+
+<p>Step 3: find what part of <code class="language-plaintext highlighter-rouge">E</code> intersects with <code class="language-plaintext highlighter-rouge">H</code>
+<code class="language-plaintext highlighter-rouge">0.25 - 0.1 = 0.15</code></p>
+
+<p>Step 4: find <code class="language-plaintext highlighter-rouge">(E' ⋂ H)</code>
+<code class="language-plaintext highlighter-rouge">0.2 - 0.15 = 0.05</code></p>
+
+<p>Step 5: find the probability that Bob is late given the evidence that Jane is late</p>
+
+<p>Formula: <code class="language-plaintext highlighter-rouge">P(H ⋂ E) / P(E)</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">0.15 / 0.25 = 3 / 5 = 60%</code></p>
+
+<p>We now know that Bob has a 60% chance of being late when Jane is late. When Jane is not late he has a 20% chance of being late.</p>
+
+<p>Here is a Venn Diagram to help visualize</p>
+
+<p><img src="/assets/venn_diagram_example1.png" alt="bays therom" title="bays therom" /></p>
+
+<h1 id="example-problem-2">Example Problem 2:</h1>
+
+<p>Bob loves to play Tennis, but especially when the weather is good. When it is sunny, the probability that he plays tennis is 80%. When it is not sunny, the probability is just 35%.
+There is a 60% chance that it is sunny on any given day.
+Last Saturday he played tennis. What is the probability that it was sunny last Saturday?</p>
+
+<p><code class="language-plaintext highlighter-rouge">H</code>: It was sunny last Saturday.<br />
+<code class="language-plaintext highlighter-rouge">E</code>: Bob played tennis last Saturday.</p>
+
+<p>Create a tree with all possibilities and their complement percentages.
+<img src="/assets/tree_bays_learning.png" alt="bays tree" title="bays tree" /></p>
+
+<p>Probability that it was sunny and Bob played tennis can be seen by following the right side of</p>
+
+<p>the tree: <code class="language-plaintext highlighter-rouge">P(H ⋂ E) = 0.6 X 0.8 = 0.48</code></p>
+
+<p>To calculate <code class="language-plaintext highlighter-rouge">E</code> by itself without <code class="language-plaintext highlighter-rouge">H</code> we can say:</p>
+
+<p>Either it was sunny and Bob played tennis <code class="language-plaintext highlighter-rouge">(H ⋂ E)</code></p>
+
+<p>Or it may not have been sunny and Bob played tennis <code class="language-plaintext highlighter-rouge">(H’ ⋂ E)</code>.</p>
+
+<p>We then add these two things together <code class="language-plaintext highlighter-rouge">(H ⋂ E) + (H’ ⋂ E)</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">(H ⋂ E) = 0.6 X 0.8 = 0.48</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">(H’ ⋂ E) = 0.4 X 0.35 = 0.14</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">P(E) = 0.48 + 0.14 = 0.62</code></p>
+
+<p>apply Bayes theorem to get: <code class="language-plaintext highlighter-rouge">H = 0.48/0.62 = ~77%</code></p>
+
+<p>We now know it is 77% likely that It was sunny last Saturday</p>
+
+<h1 id="example-problem-3">Example Problem 3:</h1>
+
+<p>During recessions there is a 40% chance that Bob will lose his job.
+Otherwise, there is a 5% chance.</p>
+
+<p>In any given year there is a 10% chance of a recession.</p>
+
+<p>Last year Bob lost his job. Find the probability that there was a recession.</p>
+
+<p><code class="language-plaintext highlighter-rouge">E</code> = Last year Bob lost his job<br />
+<code class="language-plaintext highlighter-rouge">H</code> = There was a recession</p>
+
+<h4 id="build-a-tree-with-all-possibilities">Build a tree with all possibilities.</h4>
+<p><img src="/assets/e_3_t1.png" alt="bays tree" title="bays tree" /></p>
+
+<h4 id="find-the-probability-that-he-lost-his-job-and-there-is-a-recession-h--e">Find the probability that he lost his job and there is a recession <code class="language-plaintext highlighter-rouge">(H ⋂ E)</code></h4>
+<p><img src="/assets/e_3_t2.png" alt="bays tree" title="bays tree" /></p>
+
+<h4 id="the-probability-of-e-is-either-there-was-a-recession-and-he-lost-his-job-h--e-or-there-was-not-a-recession-and-he-lost-his-job-h--e">The probability of <code class="language-plaintext highlighter-rouge">E</code> is either there was a recession and he lost his job <code class="language-plaintext highlighter-rouge">(H ⋂ E)</code> Or there was not a recession and he lost his job <code class="language-plaintext highlighter-rouge">(H’ ⋂ E)</code></h4>
+<p><img src="/assets/e_3_t3.png" alt="bays tree" title="bays tree" /></p>
+
+<p>= ~47%</p>]]></content><author><name></name></author><category term="bayesian" /><category term="statistics" /><summary type="html"><![CDATA[Quick Notes]]></summary></entry></feed>
